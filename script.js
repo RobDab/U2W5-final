@@ -17,6 +17,7 @@ function flip(userClick){
 
     if(FIRST_CARD === undefined){
         FIRST_CARD = userClick.target
+        FIRST_CARD.removeAttribute('onclick')
     }else{
         SECOND_CARD = userClick.target
         for (let card of cards) {
@@ -24,4 +25,33 @@ function flip(userClick){
         }
     }
     console.log(FIRST_CARD,SECOND_CARD)
+    setTimeout(function(){
+        let same = compare(FIRST_CARD,SECOND_CARD)
+        if(same === true){
+            FIRST_CARD.classList.replace('flipped','matched')
+            SECOND_CARD.classList.replace('flipped','matched')
+        }else{
+            FIRST_CARD.classList.remove('flipped')
+            SECOND_CARD.classList.remove('flipped')
+        }
+        let notMatched = document.getElementsByClassName('card:not(.matched)')
+        
+        for( i = 0; i < notMatched.lenght; i++){
+            notMatched[i].setAttribute('onclick','flip(event)')
+        }
+        FIRST_CARD = undefined
+        SECOND_CARD = undefined
+
+        
+    },1500)
+
+    
+}
+
+function compare(a,b){
+    if(a.innerHTML === b.innerHTML){
+        return true;
+    }else{
+        return false;
+    }
 }
