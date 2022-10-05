@@ -34,14 +34,15 @@ function flip(userClick){
             FIRST_CARD.classList.remove('flipped')
             SECOND_CARD.classList.remove('flipped')
         }
-        let notMatched = document.getElementsByClassName('card:not(.matched)')
-        
-        for( i = 0; i < notMatched.lenght; i++){
+        console.log(FIRST_CARD,SECOND_CARD)
+        let notMatched = document.querySelectorAll('.card:not(.matched)')
+        console.log(notMatched)
+        for(let i = 0; i < notMatched.lenght; i++){
             notMatched[i].setAttribute('onclick','flip(event)')
         }
+        
         FIRST_CARD = undefined
         SECOND_CARD = undefined
-
         
     },1500)
 
