@@ -6,13 +6,13 @@
 let cards = document.getElementsByClassName('card')
 console.log(cards)
 
-let FIRST_CARTD
+let FIRST_CARD
 let SECOND_CARD
 
 
 
 function flip(userClick){
-    console.log(userClick.target)
+    // console.log(userClick.target)
     userClick.target.classList.add('flipped')
 
     if(FIRST_CARD === undefined){
@@ -23,4 +23,5 @@ function flip(userClick){
             card.removeAttribute('onclick')
         }
     }
+    console.log(FIRST_CARD,SECOND_CARD)
 }
